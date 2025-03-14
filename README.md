@@ -1,6 +1,3 @@
 
-aviasales
-
 aviasales-app
-
 
