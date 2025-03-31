@@ -1,12 +1,14 @@
 import ReactDOM from 'react-dom/client'
+import { Provider } from 'react-redux'
+import store from './store'
 import AviasalesApp from './components/aviasales-app'
 import './index.scss'
 
 function App() {
   return (
-    <div>
+    <Provider store={store}>
       <AviasalesApp />
-    </div>
+    </Provider>
   )
 }
 

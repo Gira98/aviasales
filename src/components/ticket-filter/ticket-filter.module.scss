@@ -35,30 +35,28 @@
         border-radius: 5px;
       }
   }
-
-    &:active {
-      background-color: #2196F3;
-        .button {
-          background-color: #2196F3;
-          color: white;
-        }
-    }
-
-    &:hover {
-      background-color:  #F1FCFF;
-      cursor: pointer;
-      border: 1px solid #2196F3;
-
-      .button {
-        background-color:  #F1FCFF;
-        cursor: pointer;
-      }
-    }
 }
 
 .button {
   border: none; 
   outline: none; 
   background-color: white;
+  padding: 15px;
+  width: 100%;
+
+  &:hover {
+    background-color:  #F1FCFF;
+    cursor: pointer;
+  }
+
 }
 
+.active {
+  background-color: #2196F3;
+  color: white;
+
+  &:hover {
+    background-color: #1E88E5;
+    cursor: pointer;
+  }
+}

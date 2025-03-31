@@ -5,7 +5,17 @@ import TicketFilter from "../ticket-filter/ticket-filter";
 import styles from "./aviasales-app.module.scss";
 import logo from "./logo.svg";
 
+import { fetchData } from "../slice/serverSlice";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
 export default function AviasalesApp() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchData())
+  }, [])
+
   return (
     <>
       <div className={styles.logo}>
