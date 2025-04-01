@@ -1,7 +1,7 @@
 {
   "name": "aviasales",
   "version": "0.1.0",
-  "homepage": "https://gira98.github.io/aviasales/",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",
