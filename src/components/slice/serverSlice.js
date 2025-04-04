@@ -40,6 +40,9 @@ export const fetchData = createAsyncThunk(
   "server/fetchData",
   async function (_, { dispatch }) {
     let stop = false;
+
+    let errorCount = 0;
+
     try {
       const searchId = await dispatch(fetchId()).unwrap();
 
@@ -56,6 +59,12 @@ export const fetchData = createAsyncThunk(
           stop = batch.stop;
         } catch (err) {
           console.warn(err.message);
+          errorCount ++
+
+          if (errorCount >= 5) {
+            stop = true 
+            dispatch(showErrorMessage())
+          }
         }
       }
 
@@ -72,6 +81,7 @@ const serverSlice = createSlice({
     tickets: [],
     status: null,
     error: null,
+    showError: false,
     ticketsAmount: 5,
     searchId: null,
   },
@@ -82,6 +92,9 @@ const serverSlice = createSlice({
     addTickets(state, action) {
       state.tickets = [...state.tickets, ...action.payload];
     },
+    showErrorMessage(state) {
+      state.showError = true
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -97,7 +110,7 @@ const serverSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(fetchBatch.rejected, (state, action) => {
-        state.status = "error";
+        // state.status = "error";
         state.error = action.error.message;
       })
       .addCase(fetchData.pending, (state) => {
@@ -170,6 +183,6 @@ export const selectFilteredTickets = createSelector(
   }
 )
 
-export const { showMore, addTickets } = serverSlice.actions;
+export const { showMore, addTickets, showErrorMessage } = serverSlice.actions;
 
 export default serverSlice.reducer;

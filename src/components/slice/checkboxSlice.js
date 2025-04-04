@@ -4,11 +4,11 @@ const checkboxSlice = createSlice({
   name: 'checkboxes',
   initialState: {
     checkboxes: [
-      { name: 'all', checked: false },
-      { name: 'without transfers', checked: false },
-      { name: 'one transfer', checked: false },
-      { name: 'two transfers', checked: false },
-      { name: 'three transfers', checked: false },
+      { name: 'all', checked: true },
+      { name: 'without transfers', checked: true },
+      { name: 'one transfer', checked: true },
+      { name: 'two transfers', checked: true },
+      { name: 'three transfers', checked: true },
     ],
   },
   reducers: {
